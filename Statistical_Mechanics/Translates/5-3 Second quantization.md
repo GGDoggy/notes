@@ -69,8 +69,10 @@ $$
 讓我們用下面的記號來定義 $N$ 個玻色子的一粒子算符。我們已經有一粒子算符的定義；基本上，我們已經知道這個算符所有的矩陣元素，也就是 $_j\{\alpha|\widehat{O}^{(I)}_j|\beta\}_j$。為了簡單起見，我們省略指標 $j$，用 $\{\alpha|\widehat{O}^{(I)}|\beta\}$ 表示單粒子算符的一般矩陣元素。
 
 $$
+\begin{align}
 \widehat{O}^{(I)}_{total}&=\sum_{j=1}^N\widehat{O}^{(I)}_j \\
 &=\left(\sum_{\phi_N}|\phi_N\rangle\langle \phi_N|\right)\sum_{j=1}^N\widehat{O}^{(I)}_j\left(\sum_{\phi_N'}|\phi_N'\rangle\langle \phi_N'|\right)
+\end{align}
 $$
 
 我們的目標，是把這個一粒子算符的總和用多體波函數表達出來。為了做到這點，我們需要計算矩陣元素 $\langle \phi_N|\widehat{O}^{(I)}_{total}|\phi_N'\rangle$。
@@ -82,8 +84,10 @@ $$
 在表示矩陣元素 $\langle \phi_N|\widehat{O}^{(I)}_{total}|\phi_N'\rangle$ 的總和中，會出現的一般項為
 
 $$
+\begin{align}
 &\left(_{p_{\alpha}(1)}\{u_1|_{p_{\alpha}(2)}\{u_2|\cdots\right)\widehat{O}^{(I)}_j\left(|v_1\}_{p_{\beta}(1)}|v_2\}_{p_{\beta}(2)}\cdots\right)\\
 &=\cdots\underbrace{_{p_{\alpha}(i)}\{u_i|O^{(I)}_j|v_k\}_{p_{\beta}(k)}}_{p_{\alpha}(i)=p_{\beta}(k)=j}\cdots \overbrace{\underbrace{_{p_{\alpha}(\tilde{i})}\{u_{\tilde{i}}|v_{\tilde{k}}\}_{p_{\beta}(\tilde{k})}}_{p_{\alpha}(\tilde{i})=p_{\beta}(\tilde{k})\neq j}}^{\delta_{u_{\tilde{i}},v_{\tilde{k}}}}\cdots \text{.}
+\end{align}
 $$
 
 這裡我們明確寫出了在計算矩陣元素時可能出現的兩類項。由於 $\sum_{p_{\alpha}}\sum_{p_{\beta}}\sum_j$ 中的一般項是以單粒子態寫成，因此我們必須在同一個單粒子希爾伯特空間中取內積。這裡有兩種可能：要嘛取的是第 $j$ 個希爾伯特空間，也就是 $\widehat{O}^{(I)}_j$ 非平凡作用的那個空間；要嘛取的是其他希爾伯特空間，此時我們只需要處理兩個單粒子態的內積。由於單粒子波函數彼此正交歸一，後者會產生 Kronecker delta，要求該單粒子希爾伯特空間中的量子數必須相同。
@@ -106,9 +110,11 @@ $$
 * 當 $\{u_i\}=\{v_i\}$ 時，我們應有
 
 $$
+\begin{align}
 &\sum_{p_{u}}\sum_{p_{v}}\sum_{j=1}^N\cdots _{p_{u}(i)}\{u_i|\widehat{O}^{(I)}_j|v_k\}_{p_{v}(k)}\cdots \delta_{u_{\tilde{i}},v_{\tilde{k}};p_{u}(\tilde{i})=p_{v}(\tilde{k})}\cdots \\
 &=\underbrace{\frac{N!}{\prod_{u}(n_{u}!)}}_{\sum_{p_{u}},\sum_{p_{v}=p_{u}}}\underbrace{\left(\sqrt{\frac{\prod_{u} (n_{u}!)}{N!}}\right)^2}_{\text{來自 }\langle \phi_N|,|\phi'_N\rangle\text{ 的正規化}}\sum_{j=1}^N \{u_i|\widehat{O}_j^{(I)}|u_i\}_{p_u(i)=j} \\
 &=\sum_{\alpha} \{\alpha|\widehat{O}^{(I)}|\alpha\} n_{\alpha}
+\end{align}
 $$
 
 注意這裡 $p_{\beta}$ 的選法是使得量子數集合 $\{v_i\}$ 與 $\{u_i\}$ 完全一致。在最後一個等號中，我們也已從單粒子表象切換到了佔據數表象。
@@ -116,17 +122,21 @@ $$
 * 當 $\{u_i\}=\{v_i\}$，除了 $i=i^*$ 之外都相同。這時要更小心一些，我們用 $\alpha,\beta$ 標記不同的量子數，即 $u_{i^*}=\alpha,v_{i^*}=\beta$。切換到佔據數表象後，應有
 
 $$
+\begin{matrix}
 \{u_i\}&\to \{\cdots,n_{\alpha},\cdots,n_{\beta},\cdots\}\\
 \{v_i\}&\to \{\cdots,n_{\alpha}-1,\cdots,n_{\beta}+1,\cdots\}
+\end{matrix}
 $$
 
 這裡我們以 $\{u_i\}$ 的佔據數作為參考。
 
 $$
+\begin{align}
 &\sum_{p_{u}}\sum_{p_{v}}\sum_{j=1}^N\cdots _{p_{u}(i)}\{u_i|\widehat{O}^{(I)}_j|v_k\}_{p_{v}(k)}\cdots \delta_{u_{\tilde{i}},v_{\tilde{k}};p_{u}(\tilde{i})=p_{v}(\tilde{k})}\cdots \\
 &=\underbrace{\frac{N!\overbrace{n_{\alpha}}^{\beta \text{ 可接到任意一個 }\alpha}}{\prod_{u}(n_{u}!)}}_{\sum_{p_{u}}\sum_{p_{v}}}\times \underbrace{\left(\sqrt{\frac{\prod_{u} (n_{u}!)}{N!}}\right)}_{\text{來自 }\langle \phi_N|\text{ 的正規化}}\underbrace{\left(\sqrt{\frac{\prod_{v\neq\alpha,\beta} (n_{v}!)}{N!}}\sqrt{(n_{\alpha}-1)!(n_{\beta}+1)!}\right)}_{\text{來自 }|\phi'_N\rangle\text{ 的正規化}}\times\\
 &\sum_{j=1}^N \{u_{i^*}|\widehat{O}_j^{(I)}|v_{i^*}\}_{p_u(i^*)=p_v(i^*)} \\
-&=\sqrt{n_{\alpha}(n_{\beta}+1)} \{\alpha|\widehat{O}^{(I)}|\beta\}
+&=$\sqrt{n_{\alpha}(n_{\beta}+1)} \{\alpha|\widehat{O}^{(I)}|\beta\}
+\end{align}
 $$
 
 在最後一個等號中，我們用了這個事實：對每個排列來說，只有在 $j=p_u(i^*)=p_v(i^*)$ 時，矩陣元素才會非零。
@@ -161,6 +171,7 @@ $$
 
 玻色子的產生／湮滅算符 $b^{\dagger}_k/b_k$ 定義為
 
+
 $$
 \begin{array}{c}
 &[b_k,b_{k'}^{\dagger}]=\delta_{k,k'}\\
@@ -168,6 +179,7 @@ $$
 \end{array}
 \text{.}
 $$
+
 
 這裡 $k,k'$ 是單粒子量子數，$[A,B]=AB-BA$ 是對易子。
 我們所能構造出的最簡單厄米量是
@@ -244,8 +256,10 @@ $$
 1. 費米子的第二量子化：要構造費米子的第二量子化表示，必須仔細處理相位因子。因此，我們需要引入費米子的產生／湮滅算符。
 
 	$$
+	\begin{align}
 	[f_k,f^{\dagger}_{k'}]_+&=\delta_{k,k'}\\
 	[f_k,f_{k'}]+&=[f^{\dagger}_k,f^{\dagger}_{k'}]_+=0
+	\end{align}
 	$$
 2. 這個問題的一種簡潔處理方式可參考 {cite:p}`feynman2018statistical`。
 3. 利用第二量子化建立擾動理論：這基本上會牽涉到費曼圖，超出本課程範圍。

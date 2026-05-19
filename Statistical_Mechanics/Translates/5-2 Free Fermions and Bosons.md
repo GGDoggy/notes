@@ -10,19 +10,19 @@
 
 由於滿足 $\phi(\textbf{x}_1,\textbf{x}_2)=\pm\phi(\textbf{x}_2,\textbf{x}_1)$，我們可以把波函數分成兩大類：對玻色子而言是對稱化波函數；對費米子而言則是反對稱化波函數。
 
-$$
+ $$
+\begin{align}
 \phi^{B}(\textbf{x}_1,\textbf{x}_2)=\phi_a(\textbf{x}_1)\phi_b(\textbf{x}_2)+\phi_a(\textbf{x}_2)\phi_b(\textbf{x}_1)\\
 \phi^{F}(\textbf{x}_1,\textbf{x}_2)=\phi_a(\textbf{x}_1)\phi_b(\textbf{x}_2)-\phi_a(\textbf{x}_2)\phi_b(\textbf{x}_1)\text{.}
+\end{align}
 $$
 
 這裡 $a,b$ 是系統的量子數。對費米子來說，若 $a=b$，波函數就會變成零。這就是泡利不相容原理在這個簡單設定中的體現。
 
 例如，光子與聲子是玻色子；電子與中子則是費米子。
 
-```{admonition} 這是什麼？
-:class: tip
-上面的論證看起來相當一般。不過，在二維空間中會出現一些微妙之處。那裡的交換操作並不那麼平凡，因此除了費米子或玻色子之外，還可能出現不同的量子統計行為。這類粒子稱為 anyon。展示 anyon 物理的一個最簡單模型，是 [toric code model](https://topocondmat.org/index.html)。Anyons 可用於量子計算，因此近年來吸引了大量關注。一些相關主題的近期突破包括 {cite:p}`semeghini2021probing` 與 {cite:p}`satzinger2021realizing`。
-```
+>[!TIP] What?
+>上面的論證看起來相當一般。不過，在二維空間中會出現一些微妙之處。那裡的交換操作並不那麼平凡，因此除了費米子或玻色子之外，還可能出現不同的量子統計行為。這類粒子稱為 anyon。展示 anyon 物理的一個最簡單模型，是 [toric code model](https://topocondmat.org/index.html)。Anyons 可用於量子計算，因此近年來吸引了大量關注。一些相關主題的近期突破包括 {cite:p}`semeghini2021probing` 與 {cite:p}`satzinger2021realizing`。
 
 ## 量子多體系統（非交互作用極限）
 
@@ -54,8 +54,10 @@ $$
 *情況 1*，$\gamma_1\neq \gamma_2$：
 
 $$
+\begin{align}
 \phi^{B/F}(\textbf{x}_1,\textbf{x}_2)&=\sqrt{2}^{-1}\left[\phi_{a}(\textbf{x}_1)\phi_{b}(\textbf{x}_2)\pm \phi_{a}(\textbf{x}_2)\phi_{b}(\textbf{x}_1)\right]=\langle \textbf{x}_1,\textbf{x}_2\vert \phi^{B/F}\rangle\\
 \vert \phi^{B/F}_{\{a,b\}}\rangle &= \frac{1}{\sqrt{2}}\left[\vert\phi_{a}\}_1\otimes \vert\phi_{b}\}_2\pm \vert \phi_{b}\}_1\otimes\vert\phi_{a}\}_2 \right]= \frac{1}{\sqrt{2}}\left[\vert\phi_{a}\}_1\otimes \vert\phi_{b}\}_2\pm \vert\phi_{a}\}_2\otimes\vert \phi_{b}\}_1 \right] \text{.}
+\end{align}
 $$
 
 在最後兩個等號中，我們可以把花括號 ket 理解成：固定希爾伯特空間的順序、去排列量子數 $a,b$；或者反過來，把量子數的順序視為固定，改為排列希爾伯特空間指標。這裡我們用角括號 ket $\vert \phi\rangle$ 來表示已考慮不可區分性的多體波函數。
@@ -65,8 +67,10 @@ $$
 我們會發現，對費米子系統而言，因為泡利不相容原理，這樣的波函數根本無法形成。不過，玻色子的情況則有兩個可能的態
 
 $$
+\begin{align}
 \vert \phi^B_{\{a,a\}}\rangle &=|\phi_a\}_1|\phi_a\}_2\nonumber\\
 \vert \phi^B_{\{b,b\}}\rangle &=|\phi_b\}_1|\phi_b\}_2\text{.}
+\end{align}
 $$
 
 我們也可以從另一個角度發問：我們到底在做什麼？若兩個希爾伯特空間可區分，則 $\mathcal{H}_1\otimes\mathcal{H}_2$ 的維度是 4。上面的過程，其實是在不可區分性成立時，構造這個空間對應的基底。那麼，費米子希爾伯特空間、玻色子希爾伯特空間與原本的 $\mathcal{H}_1\otimes\mathcal{H}_2$ 之間到底是什麼關係？讓我們透過這個簡單例子來探索其相關結構，再進一步做推廣。
@@ -74,10 +78,12 @@ $$
 $\mathcal{H}_1\otimes\mathcal{H}_2$ 的四個基底是：
 
 $$
+\begin{align}
 \vert \phi_{ (a,a)}\}&= \vert\phi_a\}_1\vert\phi_a\}_2\nonumber\\
 \vert \phi_{ (a,b)}\}&= \vert\phi_a\}_1\vert\phi_b\}_2\nonumber\\
 \vert \phi_{ (b,a)}\}&= \vert\phi_b\}_1\vert\phi_a\}_2\nonumber\\
 \vert \phi_{ (b,b)}\}&= \vert\phi_b\}_1\vert\phi_b\}_2\text{.}
+\end{align}
 $$
 
 這裡我們用 $(a,b)$ 來提醒自己，順序是重要的。
@@ -87,10 +93,12 @@ $$
 盯著這些波函數的結構看，我們立刻會意識到 $\mathcal{H}_1\otimes\mathcal{H}_2=\mathcal{H}^B\oplus\mathcal{H}^F$。也就是說，原本那個尚未考慮不可區分性的希爾伯特空間，可以由玻色子希爾伯特空間與費米子希爾伯特空間的直和來組成。換言之，
 
 $$
+\begin{align}
 \vert \phi_{ (a,a)}\}&= \vert \phi^B_{\{a,a\}}\rangle\nonumber\\
 \vert \phi_{ (a,b)}\}&= (\vert \phi^B_{\{a,b\}}\rangle+\vert \phi^F_{\{a,b\}}\rangle)/\sqrt{2}\nonumber\\
 \vert \phi_{ (b,a)}\}&= (\vert \phi^B_{\{a,b\}}\rangle-\vert \phi^F_{\{a,b\}}\rangle)/\sqrt{2}\nonumber\\
 \vert \phi_{ (b,b)}\}&= \vert\phi^B_{\{b,b\}}\rangle\text{.}
+\end{align}
 $$
 
 所以，我們看清楚了其數學結構。不過，當然我們知道費米子永遠是費米子，因此拿玻色子波函數與費米子波函數做疊加並沒有物理意義。熟悉對稱性如何作用於量子系統的讀者，可能會覺得這種結構和考慮某種對稱性時的不可約表示很相似。這也是為什麼有時我們稱 $\mathcal{H}^B$ 為玻色子 sector，$\mathcal{H}^F$ 為費米子 sector。這些彼此之間不存在疊加原理的 sector，稱為 superselection sector。
@@ -110,15 +118,19 @@ $$
 $N$ 粒子系統的一般化波函數應寫為
 
 $$
+\begin{align}
 \vert \phi^B_N\rangle =\sqrt{\frac{N!}{\prod_{\mu}n_{\mu}!}}^{-1}P_{S}\left[ \vert \phi_{\gamma_1}\}_1 \otimes\vert \phi_{\gamma_2}\}_2 \otimes\cdots\otimes\vert \phi_{\gamma_N}\}_N\right]\\
 \vert \phi^F_N\rangle =\sqrt{\frac{N!}{\prod_{\mu}n_{\mu}!}}^{-1}P_{AS}\left[ \vert \phi_{\gamma_1}\}_1 \otimes\vert \phi_{\gamma_2}\}_2 \otimes\cdots\otimes\vert \phi_{\gamma_N}\}_N\right]
+\end{align}
 $$
 
 其中
 
 $$
+\begin{align}
 P_{S/AS}\left[ \vert \phi_{\gamma_1}\}_1 \otimes\vert \phi_{\gamma_2}\}_2 \otimes\cdots\otimes\vert \phi_{\gamma_N}\}_N\right]&=\sum_p P^{\eta}_p\left[ \vert \phi_{\gamma_1}\}_1 \otimes\vert \phi_{\gamma_2}\}_2 \otimes\cdots\otimes\vert \phi_{\gamma_N}\}_N\right]\nonumber\\
 &=\sum_{p}\eta^{\overline{p}}\vert \phi_{\gamma_1}\}_{p(1)} \otimes\vert \phi_{\gamma_2}\}_{p(2)} \otimes\cdots\otimes\vert \phi_{\gamma_N}\}_{p(N)}\text{.}
+\end{align}
 $$
 
 這裡，$\eta=\pm1$ 分別對應對稱與反對稱求和；$p$ 是 $N$ 個物件的一個排列；$p(j)$ 表示該排列中的第 $j$ 個物件。$\overline{p}$ 則是一個整數，代表要把排列 $p$ 透過交換相鄰元素還原成有序排列所需的步數。舉例來說，對於三個物件的排列 $p=[231]$，有 $\overline{p}=2$，因為我們需要先交換 31，再交換 21，才能回到 $[123]$。總和中包含 $\frac{N!}{\prod_{\mu}n_{\mu}!}$ 項，因此正規化因子是 $\sqrt{\frac{N!}{\prod_{\mu}n_{\mu}!}}^{-1}$。不過，由於泡利不相容原理，在費米子的情況下必須滿足 $n_{\mu}=0/1$；玻色子則沒有這個限制。
@@ -127,69 +139,78 @@ $$
 
 我們從簡單情況出發，依照形式上的直觀推導出考慮量子粒子不可區分性後，多體波函數的一般形式。但我們到底在做什麼？本質上，我們是在構造用來描述總希爾伯特空間 $\mathcal{H}$ 的基底，而且特別希望這組基底能滿足量子統計。若要真正確認自己的理解是對的，不妨問自己：最簡單的非平凡例子是什麼？我們能否用它來建立直覺？
 
-```{admonition} 練習
-:class: tip
-考慮最簡單的非平凡情況：三玻色子系統。
-三個粒子的排列有 6 種不同配置。把它們顯式列出如下：
+>[!TIP] Exercise
+>考慮最簡單的非平凡情況：三玻色子系統。
+>三個粒子的排列有 6 種不同配置。把它們顯式列出如下：
+>
+>$$
+>\begin{align}
+>p_6: (123)\quad
+>p_1: (132)\nonumber\\
+>p_2: (231)\quad
+>p_3: (213)\nonumber\\
+>p_4: (312)\quad
+>p_5: (321)\nonumber
+>\end{align}
+>$$
+>
+>根據上面的定義，我們有
+>$$
+>\begin{align}
+>P^{\eta}_{p_2}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
+>&= \eta^{\overline{p_2}}\left( \vert\psi_{\alpha}\}_{p_2(1)}\otimes\vert\psi_{\beta}\}_{p_2(2)}\otimes\vert\psi_{\gamma}\}_{p_2(3)}\right)\nonumber\\
+>&=  \eta^{2}\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_1\right)
+>\end{align}
+>$$
+>
+>在此時，我們先不對 $\alpha,\beta,\gamma$ 做任何限制，將它們視為互不相同，並把三個相同粒子的多體波函數建構為對所有可能排列的總和。事實上，若 $\alpha,\beta,\gamma$ 都彼此不同，我們知道這樣的項總共會有 6 個，因此正規化應該是 $\sqrt{3!}^{-1}$。更具體地說，當 $\alpha\neq\beta\neq\gamma$ 時，
+>
+>$$
+>\begin{align}
+>	\vert\phi_{N=3}\rangle& = \frac{1}{\sqrt{6}}
+>	\Big\{ 
+>		\left( \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3\right)+
+>		\eta\left( \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_2\right)+\nonumber\\
+>		&\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_1\right)+
+>		\eta\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_1\otimes\vert\psi_{\gamma}\}_3\right)+\nonumber\\
+>		&\left( \vert\psi_{\alpha}\}_3\otimes\vert\psi_{\beta}\}_1\otimes\vert\psi_{\gamma}\}_2\right)+
+>		\eta\left( \vert\psi_{\alpha}\}_3\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_1\right)
+>	\Big\}\nonumber\\
+>	&= \Big\vert\left\{ \alpha,\beta,\gamma \right\}\Big\rangle
+>\end{align}
+>$$
+>
+>接著，假設 $\alpha=\beta=x$。依照同樣的程序，我們有
+>
+>$$
+>\begin{align}
+>	P^{\eta}_{p_2}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
+>	&=  \left[ \eta \right]^{2}\left( \vert\psi_{x}\}_2\otimes\vert\psi_{x}\}_3\otimes\vert\psi_{\gamma}\}_1\right)\nonumber\\
+>	P^{\eta}_{p_5}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
+>	&=  \left[ \eta \right]^{3}\left( \vert\psi_{x}\}_3\otimes\vert\psi_{x}\}_2\otimes\vert\psi_{\gamma}\}_1\right)
+>\end{align}
+>$$
+>
+>若 $\eta=-1$，也就是費米子，這兩項會彼此抵消。我們很容易說服自己，所有項都會如此精確地兩兩抵消。這就是泡利不相容原理。
+>
+>若 $\eta=+1$，也就是玻色子，這兩項就會相加。不過這裡有個微妙之處：張量積其實是阿貝爾的，因此這兩個基底其實是相同的。於是，不像 $\alpha,\beta,\gamma$ 全都不同時，需要用 6 個基底態來構造具有不可區分性的波函數；當其中兩個量子數相同時，我們其實只需要 3 個基底態就夠了。
+>
+>更具體地，當 $\alpha=\beta=x,\gamma\neq x$ 時，我們有
+>
+>$$
+>\begin{align}
+>	\vert\phi_{N=3}\rangle&= \frac{
+>		\vert\psi_{x}\}_1\vert\psi_{x}\}_2\vert\psi_{\gamma}\}_3+
+>		\vert\psi_{x}\}_2\vert\psi_{x}\}_3\vert\psi_{\gamma}\}_1+
+>		\vert\psi_{x}\}_3\vert\psi_{x}\}_1\vert\psi_{\gamma}\}_2
+>	}{\sqrt{\frac{3!}{2!1!}}}\nonumber\\
+>	&= \Big\vert\left\{ x,x,\gamma \right\}\Big\rangle
+>\end{align}
+>$$
+>
+>
+>透過這個顯式表達式，你可以試著交換任意兩個粒子指標，驗證該波函數確實是玻色子／費米子所需的對稱或反對稱波函數。
 
-$$
-	p_6: (123)\quad 
-	p_1: (132)\nonumber\\
-	p_2: (231)\quad
-	p_3: (213)\nonumber\\
-	p_4: (312)\quad
-	p_5: (321)\nonumber
-$$
-
-根據上面的定義，我們有
-
-$$
-	P^{\eta}_{p_2}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
-	&= \eta^{\overline{p_2}}\left( \vert\psi_{\alpha}\}_{p_2(1)}\otimes\vert\psi_{\beta}\}_{p_2(2)}\otimes\vert\psi_{\gamma}\}_{p_2(3)}\right)\nonumber\\
-	&=  \eta^{2}\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_1\right)
-$$
-
-在此時，我們先不對 $\alpha,\beta,\gamma$ 做任何限制，將它們視為互不相同，並把三個相同粒子的多體波函數建構為對所有可能排列的總和。事實上，若 $\alpha,\beta,\gamma$ 都彼此不同，我們知道這樣的項總共會有 6 個，因此正規化應該是 $\sqrt{3!}^{-1}$。更具體地說，當 $\alpha\neq\beta\neq\gamma$ 時，
-
-$$
-	\vert\phi_{N=3}\rangle& = \frac{1}{\sqrt{6}}
-	\Big\{ 
-		\left( \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3\right)+
-		\eta\left( \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_2\right)+\nonumber\\
-		&\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_3\otimes\vert\psi_{\gamma}\}_1\right)+
-		\eta\left( \vert\psi_{\alpha}\}_2\otimes\vert\psi_{\beta}\}_1\otimes\vert\psi_{\gamma}\}_3\right)+\nonumber\\
-		&\left( \vert\psi_{\alpha}\}_3\otimes\vert\psi_{\beta}\}_1\otimes\vert\psi_{\gamma}\}_2\right)+
-		\eta\left( \vert\psi_{\alpha}\}_3\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_1\right)
-	\Big\}\nonumber\\
-	&= \Big\vert\left\{ \alpha,\beta,\gamma \right\}\Big\rangle
-$$
-
-接著，假設 $\alpha=\beta=x$。依照同樣的程序，我們有
-
-$$
-	P^{\eta}_{p_2}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
-	&=  \left[ \eta \right]^{2}\left( \vert\psi_{x}\}_2\otimes\vert\psi_{x}\}_3\otimes\vert\psi_{\gamma}\}_1\right)\nonumber\\
-	P^{\eta}_{p_5}\left[ \vert\psi_{\alpha}\}_1\otimes\vert\psi_{\beta}\}_2\otimes\vert\psi_{\gamma}\}_3 \right]
-	&=  \left[ \eta \right]^{3}\left( \vert\psi_{x}\}_3\otimes\vert\psi_{x}\}_2\otimes\vert\psi_{\gamma}\}_1\right)
-$$
-
-若 $\eta=-1$，也就是費米子，這兩項會彼此抵消。我們很容易說服自己，所有項都會如此精確地兩兩抵消。這就是泡利不相容原理。
-
-若 $\eta=+1$，也就是玻色子，這兩項就會相加。不過這裡有個微妙之處：張量積其實是阿貝爾的，因此這兩個基底其實是相同的。於是，不像 $\alpha,\beta,\gamma$ 全都不同時，需要用 6 個基底態來構造具有不可區分性的波函數；當其中兩個量子數相同時，我們其實只需要 3 個基底態就夠了。
-
-更具體地，當 $\alpha=\beta=x,\gamma\neq x$ 時，我們有
-
-$$
-	\vert\phi_{N=3}\rangle&= \frac{
-		\vert\psi_{x}\}_1\vert\psi_{x}\}_2\vert\psi_{\gamma}\}_3+
-		\vert\psi_{x}\}_2\vert\psi_{x}\}_3\vert\psi_{\gamma}\}_1+
-		\vert\psi_{x}\}_3\vert\psi_{x}\}_1\vert\psi_{\gamma}\}_2
-	}{\sqrt{\frac{3!}{2!1!}}}\nonumber\\
-	&= \Big\vert\left\{ x,x,\gamma \right\}\Big\rangle
-$$
-
-透過這個顯式表達式，你可以試著交換任意兩個粒子指標，驗證該波函數確實是玻色子／費米子所需的對稱或反對稱波函數。
-```
 
 ### 多體哈密頓量
 
@@ -280,17 +301,21 @@ $$
 
 我們得到
 
+
 $$
 \ln Z_{GC}=(2S+1)\left(\frac{L}{h}\right)^3\int d^3{\textbf{p}} (-\eta) \ln\left[1-\eta z e^{-\frac{\textbf{p}^2}{2mk_BT}}\right]\\
 =(2S+1)\left(\frac{L}{h}\right)^3(4\pi)\int_0^{\infty}p^2dp (-\eta) \ln\left[1-\eta z e^{-\frac{\textbf{p}^2}{2mk_BT}}\right]\\
 \xrightarrow{p=\sqrt{2mk_BT}\tilde{p}}(2S+1)\left(\frac{L}{h}\right)^3(4\pi)\sqrt{2mk_BT}^3 (-\eta) \int_0^{\infty}\tilde{p}^2d\tilde{p}\ln\left[1-\eta z e^{-\tilde{p}^2}\right]
 $$
 
+
 利用關係式 $\ln(1+x)=-\sum_{n=1}^{\infty} \frac{(-x)^n}{n}$，我們有
+
 
 $$
 \ln Z_{GC}=(2S+1)(4\pi) L^3\sqrt{\frac{2mk_BT}{h^2}}^3 (\eta) \left[\sum_{n=1}^{\infty}\frac{(\eta z)^n }{n}\int_0^{\infty}\tilde{p}^2e^{-n\tilde{p}^2}d\tilde{p}\right]\\
 $$
+
 
 我們注意到，對 $\tilde{p}$ 的積分是高斯積分，因此可以精確計算。這就是來自 $\epsilon(\textbf{p})$ 對動量二次依賴的額外資訊。
 
@@ -370,11 +395,13 @@ $$
 系統總粒子數在 $D$ 維空間中可以寫為
 
 $$
+\begin{align}
 N=(2S+1)\sum_{\textbf{p}_a} n_B(\textbf{p}_a)=(2S+1)\left(\frac{L}{h}\right)^D \int_0^{\infty} S_Dp^{D-1}dp\frac{1}{e^{\frac{p^2}{2mk_BT}}z^{-1}-1}\\
 \xrightarrow{p\to\sqrt{2mk_BT} x}
 (2S+1)L^D\left(\sqrt{\frac{2\pi mk_BT}{h^2}}\right)^D\frac{2}{\Gamma(D/2)}\underbrace{\int_0^{\infty}ze^{-x^2}\frac{1}{1-ze^{-x^2}} x^{D-1}dx}_{\text{對 }z\text{ 單調遞增的函數}}\\
 =(2S+1)\left(\frac{L}{\lambda}\right)^D\frac{2}{\Gamma(D/2)}\sum_{n=1}^{\infty} z^n \underbrace{\int_0^{\infty}x^{D-1} e^{-nx^2}dx}_{\Gamma(D/2)/(2n^{D/2})}\\
 =(2S+1)\left(\frac{L}{\lambda}\right)^D\phi_{D/2}(z)<(2S+1)\left(\frac{L}{\lambda}\right)^D\phi_{D/2}(z=1)
+\end{align}
 $$
 
 這裡，當 $D=2$ 時會對應到黎曼 zeta 函數 $\zeta_R(1)\to\infty$；當 $D=3$ 時，$\zeta_R(3/2)\approx 2.6...$。當 $\phi_{D/2}(1)=C_D$ 有限時，我們就得到一個總粒子數必須滿足的不等式：
@@ -395,8 +422,10 @@ $$
 一旦觀察到這個行為，我們就知道應該把 $\textbf{p}=0$ 模態與其餘 $\textbf{p}\neq0$ 模態分開處理。對於 $\textbf{p}\neq0$ 的模態，積分近似仍然沒有問題。因此，佔據在 $\textbf{p}=0$ 模態上的粒子數可寫為
 
 $$
+\begin{align}
 N_{\textbf{p}=0}=N-N_{\textbf{p}\neq0}=N-(2S+1)\left(\frac{L}{\lambda}\right)^D\phi_{D/2}(z)>N-(2S+1)\left(\frac{L}{\lambda}\right)^D\phi_{D/2}(1)\\
 =N\left[1-\underbrace{(2S+1)\frac{1}{N}\left(\frac{L\sqrt{2\pi m k_B}}{h}\right)^D\phi_{D/2}(1)}_{T_c^{-D/2}} T^{D/2}\right]=N\left[1-\left(\frac{T}{T_c}\right)^{D/2}\right]
+\end{align}
 $$
 
 另一方面，fugacity $z$ 是由 $\textbf{p}\neq0$ 模態上的粒子數決定的，也就是
