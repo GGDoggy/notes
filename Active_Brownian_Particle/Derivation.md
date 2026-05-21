@@ -1,53 +1,75 @@
-# `Results.md` 的驗證與推導
+# Results.md 的驗證與推導
 
-## 1. 起點
+這份推導採用你指定的角變數與局部基底：
 
-我們從下式出發：
+$$
+\theta_1=\psi_R-\phi,\qquad \theta_2=\phi'-\phi,
+$$
+
+$$
+\hat u=\hat{\mathbf u}(\phi),\qquad
+\hat v=\hat{\mathbf u}\!\left(\phi+\frac{\pi}{2}\right),
+\qquad
+\hat{\mathbf u}(\psi_R)=(\cos\psi_R,\sin\psi_R)^T.
+$$
+
+我們要處理的是
 
 $$
 \mathbf I[\rho](\mathbf r,\phi,t)
 =
-\int_0^\infty dr \int_0^{2\pi} d\psi_R \int_0^{2\pi} d\phi'\;
+\int_0^\infty dr\int_0^{2\pi}d\psi_R\int_0^{2\pi}d\phi'\;
 r\,U'(r)\,\hat{\mathbf u}(\psi_R)\,
-g\bigl(r,\psi_R-\phi,\phi'-\phi\bigr)\,
-\rho\bigl(\mathbf r+r\hat{\mathbf u}(\psi_R),\phi',t\bigr),
+g(r,\psi_R-\phi,\phi'-\phi)\,
+\rho(\mathbf r+r\hat{\mathbf u}(\psi_R),\phi',t).
 $$
 
-其中
+## 1. 先固定 $g$ 的分解
 
-$$
-\hat{\mathbf u}(\psi_R)=(\cos\psi_R,\sin\psi_R)^T.
-$$
-
-以下使用縮寫
-
-$$
-\theta_1=\psi_R-\phi,\qquad \theta_2=\phi'-\phi.
-$$
-
-`Results.md` 中對 pair-correlation function 的展開寫成
+依照你最新指定的寫法，先把 pair-correlation function 展開成
 
 $$
 g(r,\theta_1,\theta_2)
 =
 \sum_{n_1,n_2}
-\Bigl[
-B_s(n_1,n_2,r)\cos(n_1\theta_1)\cos(n_2\theta_2)
+B(n_1,n_2,r)\cos(n_1\theta_1+n_2\theta_2).
+$$
+
+再把 cosine 改寫成指數形式：
+
+$$
+\cos(n_1\theta_1+n_2\theta_2)
+=
+\frac{1}{2}
+\left[
+e^{i(n_1\theta_1+n_2\theta_2)}
 +
-B_a(n_1,n_2,r)\sin(n_1\theta_1)\sin(n_2\theta_2)
-\Bigr].
+e^{-i(n_1\theta_1+n_2\theta_2)}
+\right].
 $$
 
-## 2. 沿著 $\hat u,\hat v$ 的 Taylor 展開
-
-這裡不使用固定的 $x,y$ 座標，而改用隨粒子方向 $\phi$ 轉動的局部正交基底
+因此
 
 $$
-\hat u=\hat{\mathbf u}(\phi),\qquad
-\hat v=\hat{\mathbf u}\!\left(\phi+\frac{\pi}{2}\right).
+g(r,\theta_1,\theta_2)
+=
+\sum_{n_1,n_2}\frac{B(n_1,n_2,r)}{2}
+\left[
+e^{i(n_1\theta_1+n_2\theta_2)}
++
+e^{-i(n_1\theta_1+n_2\theta_2)}
+\right].
 $$
 
-由於
+## 2. 對局部基底做 Taylor 展開
+
+因為
+
+$$
+\psi_R=\theta_1+\phi,
+$$
+
+所以
 
 $$
 \hat{\mathbf u}(\psi_R)
@@ -57,319 +79,376 @@ $$
 \cos\theta_1\,\hat u+\sin\theta_1\,\hat v,
 $$
 
-因此位移向量可以寫成
+以及
 
 $$
 r\hat{\mathbf u}(\psi_R)=r\cos\theta_1\,\hat u+r\sin\theta_1\,\hat v.
 $$
 
-令方向導數記為
+定義方向導數
 
 $$
 \partial_u:=\hat u\cdot\nabla,\qquad
-\partial_v:=\hat v\cdot\nabla.
+\partial_v:=\hat v\cdot\nabla,
 $$
 
-則位移後的密度在 $\mathbf r$ 附近的 Taylor 展開為
+與微分算子
+
+$$
+D_{nm}:=\frac{1}{n!\,m!}\partial_u^n\partial_v^m.
+$$
+
+則密度在 $\mathbf r$ 附近可寫成
 
 $$
 \rho\bigl(\mathbf r+r\hat{\mathbf u}(\psi_R),\phi',t\bigr)
 =
 \sum_{n,m\ge 0}
-\frac{r^{n+m}}{n!\,m!}
-\cos^n\theta_1\,\sin^m\theta_1\,
-\partial_u^n\partial_v^m \rho(\mathbf r,\phi',t).
+r^{n+m}\cos^n\theta_1\,\sin^m\theta_1\,
+D_{nm}\rho(\mathbf r,\phi',t).
 $$
 
-接著把 $\rho$ 對角度 $\phi$ 做 Fourier 展開：
+再對角度 $\phi'$ 做 Fourier 展開：
 
 $$
-\rho(\mathbf r,\phi,t)=\sum_{k\in\mathbb Z}\rho_k(\mathbf r,t)e^{ik\phi},
-\qquad
-\rho_{-k}=\rho_k^*
+\rho(\mathbf r,\phi,t)=\sum_{k\in\mathbb Z}\rho_k(\mathbf r,t)e^{ik\phi}.
 $$
 
-因為 $\rho$ 是實函數，所以滿足 $\rho_{-k}=\rho_k^*$。定義
-
-$$
-D_{nm}^{(k)}(\mathbf r,t;\phi)
-:=
-\frac{1}{n!\,m!}\partial_u^n\partial_v^m\rho_k(\mathbf r,t).
-$$
-
-則可寫成
+因此
 
 $$
 \rho\bigl(\mathbf r+r\hat{\mathbf u}(\psi_R),\phi',t\bigr)
 =
-\sum_{n,m\ge 0}\sum_{k\in\mathbb Z}
+\sum_{n,m\ge0}\sum_{k\in\mathbb Z}
 r^{n+m}\cos^n\theta_1\,\sin^m\theta_1\,
-D_{nm}^{(k)}(\mathbf r,t;\phi)e^{ik\phi'}.
+\bigl(D_{nm}\rho_k(\mathbf r,t)\bigr)e^{ik\phi'}.
 $$
 
-## 3. 角向 kernel 的指數形式
+## 3. 先做 $\theta_2$ 積分
 
-令
-
-$$
-A=n_1(\psi_R-\phi)=n_1\theta_1,\qquad B=n_2(\phi'-\phi)=n_2\theta_2.
-$$
-
-利用
+由
 
 $$
-\cos A\cos B=\frac{1}{4}\left(e^{i(A+B)}+e^{i(A-B)}+e^{-i(A-B)}+e^{-i(A+B)}\right),
-$$
-
-以及
-
-$$
-\sin A\sin B=\frac{1}{4}\left(-e^{i(A+B)}+e^{i(A-B)}+e^{-i(A-B)}-e^{-i(A+B)}\right),
+\theta_2=\phi'-\phi,\qquad
+\phi'=\theta_2+\phi,\qquad
+d\phi'=d\theta_2,
 $$
 
 可得
 
 $$
-\begin{aligned}
-&B_s\cos A\cos B + B_a\sin A\sin B
-\\
-&=
-\frac{B_s-B_a}{4}\left(e^{i(A+B)}+e^{-i(A+B)}\right)
-+
-\frac{B_s+B_a}{4}\left(e^{i(A-B)}+e^{-i(A-B)}\right).
-\end{aligned}
-$$
-
-這個式子最清楚地顯示了最後會保留下來的角向 harmonic 結構。
-
-## 4. 對 $\theta_2$ 的積分
-
-由於
-
-$$
-\theta_2=\phi'-\phi,
-\qquad
-\phi'=\theta_2+\phi,
-\qquad
-d\phi'=d\theta_2,
-$$
-
-所以把 $\rho$ 的 Fourier 展開代入後，可以直接改成對 $\theta_2$ 積分。此時
-
-$$
 e^{ik\phi'}=e^{ik(\theta_2+\phi)}=e^{ik\phi}e^{ik\theta_2}.
 $$
 
-因此只需要處理形如
+把第 1 節的 $g$ 分解與第 2 節的密度展開一起代入後，
+$\theta_2$ 只會出現在
 
 $$
-\int_0^{2\pi} d\theta_2\; e^{ik\theta_2}e^{+in_2\theta_2}
+e^{ik\theta_2}e^{+in_2\theta_2}
+\qquad\text{或}\qquad
+e^{ik\theta_2}e^{-in_2\theta_2}.
+$$
+
+因此
+
+$$
+\int_0^{2\pi}d\theta_2\;e^{ik\theta_2}e^{+in_2\theta_2}
 =
 2\pi\,\delta_{k,-n_2},
 $$
 
-以及
-
 $$
-\int_0^{2\pi} d\theta_2\; e^{ik\theta_2}e^{-in_2\theta_2}
+\int_0^{2\pi}d\theta_2\;e^{ik\theta_2}e^{-in_2\theta_2}
 =
-2\pi\,\delta_{k,n_2}
+2\pi\,\delta_{k,n_2}.
 $$
 
-的正交關係。
-
-把前面的相位因子一併乘回去後，就得到
+連同 $e^{ik\phi}$ 一起保留時，得到
 
 $$
-\int_0^{2\pi} d\theta_2\; e^{ik(\theta_2+\phi)}e^{+in_2\theta_2}
+\int_0^{2\pi}d\theta_2\;e^{ik(\theta_2+\phi)}e^{+in_2\theta_2}
 =
 2\pi\,\delta_{k,-n_2}\,e^{-in_2\phi},
 $$
 
 $$
-\int_0^{2\pi} d\theta_2\; e^{ik(\theta_2+\phi)}e^{-in_2\theta_2}
+\int_0^{2\pi}d\theta_2\;e^{ik(\theta_2+\phi)}e^{-in_2\theta_2}
 =
 2\pi\,\delta_{k,n_2}\,e^{+in_2\phi}.
 $$
 
-因此，$\theta_2$ 積分後自然出現的密度模態是
+所以 $\theta_2$ 積分之後，留下的兩項是
 
 $$
-D_{nm}^{(n_2)}(\mathbf r,t;\phi)
-\qquad\text{與}\qquad
-D_{nm}^{(-n_2)}(\mathbf r,t;\phi)
-=
-\bigl(D_{nm}^{(n_2)}(\mathbf r,t;\phi)\bigr)^*.
+e^{+in_1\theta_1}\bigl(D_{nm}\rho_{-n_2}(\mathbf r,t)\bigr)e^{-in_2\phi},
+\qquad
+e^{-in_1\theta_1}\bigl(D_{nm}\rho_{n_2}(\mathbf r,t)\bigr)e^{+in_2\phi}.
 $$
 
-## 5. 對 $\psi_R$ 的積分與向量係數
-
-由於 Taylor 展開已經改寫成 $\theta_1$ 的形式，現在自然出現的向量角積分是
+若 $\rho$ 為實函數，則
 
 $$
-\mathbf C_{nm}(q;\phi)
-:=
-\int_0^{2\pi} d\psi_R\;
-\hat{\mathbf u}(\psi_R)\cos^n\theta_1\,\sin^m\theta_1\,e^{iq\psi_R}.
+\rho_{-n_2}=\rho_{n_2}^*,
+\qquad
+D_{nm}\rho_{-n_2}=\bigl(D_{nm}\rho_{n_2}\bigr)^*.
 $$
 
-把
+## 4. 再做 $\theta_1$ 積分
+
+因為
 
 $$
 \hat{\mathbf u}(\psi_R)=\cos\theta_1\,\hat u+\sin\theta_1\,\hat v,
-\qquad
-e^{iq\psi_R}=e^{iq\phi}e^{iq\theta_1}
 $$
 
-代入，可得
+定義純 $\theta_1$ 角積分
 
 $$
-\begin{aligned}
-\mathbf C_{nm}(q;\phi)
-=
-e^{iq\phi}\int_0^{2\pi} d\theta_1\,
+\widetilde{\mathbf C}_{nm}(q)
+:=
+\int_0^{2\pi}d\theta_1\,
 \Bigl(\cos\theta_1\,\hat u+\sin\theta_1\,\hat v\Bigr)
 \cos^n\theta_1\,\sin^m\theta_1\,e^{iq\theta_1}.
-\end{aligned}
 $$
 
-整理後得到
+這個積分本身不會再產生額外的 $e^{iq\phi}$。
+在目前的推導裡，$\theta_1$ 積分只留下
+$\widetilde{\mathbf C}_{nm}(q)$；
+$\phi$ 依賴一部分已經在 $\theta_2$ 積分時變成
+$e^{\pm in_2\phi}$，另一部分則保留在
+$\hat u=\hat{\mathbf u}(\phi)$ 與
+$\hat v=\hat{\mathbf u}(\phi+\pi/2)$ 這組局部基底裡。
+
+把向量分量拆開，得到
 
 $$
-\mathbf C_{nm}(q;\phi)
+\widetilde{\mathbf C}_{nm}(q)
 =
-e^{iq\phi}
-\left[
-\hat u\int_0^{2\pi} d\theta_1\,\cos^{n+1}\theta_1\,\sin^m\theta_1\,e^{iq\theta_1}
+\hat u\int_0^{2\pi}d\theta_1\,
+\cos^{n+1}\theta_1\,\sin^m\theta_1\,e^{iq\theta_1}
 +
-\hat v\int_0^{2\pi} d\theta_1\,\cos^n\theta_1\,\sin^{m+1}\theta_1\,e^{iq\theta_1}
-\right].
+\hat v\int_0^{2\pi}d\theta_1\,
+\cos^n\theta_1\,\sin^{m+1}\theta_1\,e^{iq\theta_1}.
 $$
 
-如果仍然使用純量積分
+若定義純量積分
 
 $$
-C(n,m,q)=\pi\int_0^{2\pi}\cos^n\theta\,\sin^m\theta\,e^{iq\theta}d\theta,
+C(n,m,q):=
+\pi\int_0^{2\pi}\cos^n\theta\,\sin^m\theta\,e^{iq\theta}\,d\theta,
 $$
 
-則上式可以簡寫為
+則
 
 $$
-\mathbf C_{nm}(q;\phi)
+\widetilde{\mathbf C}_{nm}(q)
 =
-\frac{e^{iq\phi}}{\pi}
-\Bigl[\hat u\,C(n+1,m,q)+\hat v\,C(n,m+1,q)\Bigr].
+\frac{1}{\pi}
+\Bigl[
+\hat u\,C(n+1,m,q)+\hat v\,C(n,m+1,q)
+\Bigr],
 $$
 
-這裡可以清楚看到：在 $\hat u,\hat v$ 基底下，向量結構是自然保留下來的，不需要先退回固定的 $x,y$ 分量。
+## 5. 徑向積分與最終局域形式
 
-## 6. 修正後的局域形式
-
-定義徑向與角向積分合併後的向量係數
+把徑向積分單獨提出來，定義
 
 $$
-\mathbf K_{nmn_1n_2}^{(\pm)}(\phi)
+A(n,m,n_1,n_2)
 :=
 \int_0^\infty dr\;
-r^{n+m+1}U'(r)\,
-\bigl(B_s(n_1,n_2,r)\pm B_a(n_1,n_2,r)\bigr)\,
-\mathbf C_{nm}(n_1;\phi).
+r^{n+m+1}U'(r)\,B(n_1,n_2,r).
 $$
 
-則 interaction term 可整理為
+綜合第 1 到第 4 節，可得
 
 $$
 \boxed{
 \mathbf I[\rho]
 =
-\frac{\pi}{2}
-\sum_{n,m,n_1,n_2}
+\pi\sum_{n,m,n_1,n_2}
+A(n,m,n_1,n_2)
 \left[
-\mathbf K_{nmn_1n_2}^{(+)}(\phi)\,D_{nm}^{(n_2)}(\mathbf r,t;\phi)\,e^{-i(n_1-n_2)\phi}
+\widetilde{\mathbf C}_{nm}(n_1)\,
+\bigl(D_{nm}\rho_{-n_2}(\mathbf r,t)\bigr)e^{-in_2\phi}
 +
-\mathbf K_{nmn_1n_2}^{(-)}(\phi)\,D_{nm}^{(-n_2)}(\mathbf r,t;\phi)\,e^{-i(n_1+n_2)\phi}
-+
-\text{c.c.}
-\right]
+\widetilde{\mathbf C}_{nm}(-n_1)\,
+\bigl(D_{nm}\rho_{n_2}(\mathbf r,t)\bigr)e^{+in_2\phi}
+\right].
 }
 $$
 
-其中 `c.c.` 表示前面各項的 complex conjugate，因此整體 $\mathbf I$ 仍為實向量。
+這裡顯式寫出的相位只來自 $\theta_2$ 積分留下的
+$e^{\pm in_2\phi}$。其餘的 $\phi$ 依賴仍然包在
+$\widetilde{\mathbf C}_{nm}(q)$ 所使用的局部基底
+$(\hat u,\hat v)$ 裡。接下來先把
+$\rho_{-n_2}e^{-in_2\phi}$ 與 $\rho_{n_2}e^{+in_2\phi}$
+這對共軛項合併，看看是否能對 $n_2$ 的求和整理回 $\rho$ 的形式。
 
-這個 boxed 式就是在 $\hat u,\hat v$ 基底下整理後的局域表示。
+### 5.5 合併共軛項
 
-## 7. 這對 `Results.md` 代表什麼
+在進入 Results.md 的整理寫法之前，先把
+$\rho_{-n_2}e^{-in_2\phi}$ 和
+$\rho_{n_2}e^{+in_2\phi}$ 這對共軛項合併。
 
-`Results.md` 目前寫的
-
+先把 Fourier mode 寫成振幅與相位：
 $$
-\sum_{n,m,n_1,n_2} D_{nm}X_{n_2}Y_{C,A}\sin(n_2\phi+\psi_{n_2}+\eta_{C,A})
-$$
-
-在一般情況下 **不正確**。主要有三個結構性問題：
-
-1. 最後留下來的 harmonic 一般是
-   $e^{-i(n_1-n_2)\phi}$ 與 $e^{-i(n_1+n_2)\phi}$，
-   因此結果同時依賴 $n_1$ 與 $n_2$，不是只依賴 $n_2$。
-
-2. 乘在導數前面的係數是向量值。
-   在目前這個寫法下，它們自然分解在 $\hat u,\hat v$ 基底上，而不是單一純量。
-
-3. 導數是先作用在 $\rho_{n_2}$ 上，之後才能再抽出振幅與相位。
-   也就是說，自然出現的物件其實是
-
-   $$
-   D_{nm}^{(n_2)}(\mathbf r,t;\phi)
-   =
-   \frac{1}{n!\,m!}\partial_u^n\partial_v^m\rho_{n_2}(\mathbf r,t),
-   $$
-
-   而不是單純的 $\rho_{n_2}$。
-   如果要改寫成極座標形式，應該寫成
-
-   $$
-   D_{nm}^{(n_2)}(\mathbf r,t;\phi)
-   =
-   \left|D_{nm}^{(n_2)}(\mathbf r,t;\phi)\right|e^{i\chi_{nm,n_2}},
-   $$
-
-   因此相位應該是 $\chi_{nm,n_2}$，而不會一般性地等於 $\arg(\rho_{n_2})$。
-
-## 8. 什麼情況下可以寫成正弦或餘弦形式
-
-如果先固定某一個分量，例如 $\hat u$ 方向上的投影，並定義
-
-$$
-K_{u,+}=|K_{u,+}|e^{i\delta_{u,+}},
-\qquad
-D_{nm}^{(n_2)}(\mathbf r,t;\phi)
+\rho_{n_2}(\mathbf r,t)
 =
-\left|D_{nm}^{(n_2)}(\mathbf r,t;\phi)\right|e^{i\chi_{nm,n_2}},
+X_{n_2}(\mathbf r,t)e^{i\psi_{n_2}(\mathbf r,t)},
+\qquad
+\rho_{-n_2}(\mathbf r,t)
+=
+X_{n_2}(\mathbf r,t)e^{-i\psi_{n_2}(\mathbf r,t)}.
 $$
 
-則其中一項確實可以寫成
+再把徑向積分與角向積分得到的複係數拆成實部與虛部：
+$$
+\pi A(n,m,n_1,n_2)\,C(n+1,m,n_1)
+=
+C_R(n+1,m)+i\,C_I(n+1,m),
+$$
+$$
+\pi A(n,m,n_1,n_2)\,C(n,m+1,n_1)
+=
+C_R(n,m+1)+i\,C_I(n,m+1).
+$$
+
+令
+$$
+\Theta:=n_2\phi+\psi_{n_2},
+\qquad
+Z_u:=\pi A\,C(n+1,m,n_1),
+\qquad
+Z_v:=\pi A\,C(n,m+1,n_1).
+$$
+
+則 $\hat u$ 分量中的共軛對可寫成
+$$
+Z_u^*X_{n_2}e^{-i\Theta}+Z_uX_{n_2}e^{+i\Theta}
+=
+2X_{n_2}\Bigl[
+C_R(n+1,m)\cos\Theta
+-C_I(n+1,m)\sin\Theta
+\Bigr],
+$$
+而 $\hat v$ 分量同理為
+$$
+Z_v^*X_{n_2}e^{-i\Theta}+Z_vX_{n_2}e^{+i\Theta}
+=
+2X_{n_2}\Bigl[
+C_R(n,m+1)\cos\Theta
+-C_I(n,m+1)\sin\Theta
+\Bigr].
+$$
+
+因此若定義
+$$
+\mathbf C_R
+:=
+C_R(n+1,m)\,\hat u+C_R(n,m+1)\,\hat v,
+\qquad
+\mathbf C_I
+:=
+C_I(n+1,m)\,\hat u+C_I(n,m+1)\,\hat v,
+$$
+那麼每一組 $(n,m,n_1,n_2)$ 的貢獻都可以整理成
+$$
+2X_{n_2}\Bigl[
+\cos\Theta\,\mathbf C_R
+-\sin\Theta\,\mathbf C_I
+\Bigr].
+$$
+
+## 6. Results.md 的整理寫法
+若只是想整理成你圖中的「振幅乘上正弦/餘弦，再乘上向量係數」的版型，
+那麼最直接且和上面推導一致的寫法是
+$$
+\mathbf I
+=
+\sum_{n,m,n_1,n_2}
+D_{nm}X_{n_2}
+\Bigl[
+2\cos(n_2\phi+\psi_{n_2})\,\mathbf C_R
+-2\sin(n_2\phi+\psi_{n_2})\,\mathbf C_I
+\Bigr].
+$$
+
+若你一定要保留 `A_s`、`A_0` 這種符號，也可以等價地定義
+$$
+A_0:=2,
+\qquad
+A_s:=-2,
+$$
+於是
+$$
+\mathbf I
+=
+\sum_{n,m,n_1,n_2}
+D_{nm}X_{n_2}
+\Bigl[
+A_s\sin(n_2\phi+\psi_{n_2})
+\bigl(
+C_I(n+1,m)\,\hat u+C_I(n,m+1)\,\hat v
+\bigr)
++
+A_0\cos(n_2\phi+\psi_{n_2})
+\bigl(
+C_R(n+1,m)\,\hat u+C_R(n,m+1)\,\hat v
+\bigr)
+\Bigr].
+$$
+
+但在你現在指定的
+$g(r,\theta_1,\theta_2)=\sum B(n_1,n_2,r)\cos(n_1\theta_1+n_2\theta_2)$
+分解下，至少有三個結構不能直接被這樣壓掉：
+
+1. 顯式相位只直接留下 $e^{\pm in_2\phi}$；其餘 $\phi$ 依賴藏在
+   $(\hat u,\hat v)$ 這組旋轉基底裡，所以不能簡單壓成只看一個
+   $n_2\phi$ 的純量正弦。
+2. 係數仍然是向量結構，必須保留 $\widetilde{\mathbf C}_{nm}$，不能直接縮成單一純量振幅。
+3. 導數先作用在 $\rho_{n_2}$ 上，所以真正該取相位的是
+   $D_{nm}\rho_{n_2}$，不是直接用 $\arg(\rho_{n_2})$。
+
+## 7. 若只看某個固定方向分量
+
+例如只看 $\hat u$ 分量，可以取
 
 $$
-2|K_{u,+}|\left|D_{nm}^{(n_2)}(\mathbf r,t;\phi)\right|
-\cos\bigl((n_1-n_2)\phi-\delta_{u,+}-\chi_{nm,n_2}\bigr),
+K_u^{(+)}:=A(n,m,n_1,n_2)\,\hat u\cdot\widetilde{\mathbf C}_{nm}(n_1),
+\qquad
+K_u^{(-)}:=A(n,m,n_1,n_2)\,\hat u\cdot\widetilde{\mathbf C}_{nm}(-n_1).
 $$
 
-另一支 $(n_1+n_2)$ 分支也可以做同樣處理。
+再寫成極形式
 
-所以，三角函數的振幅-相位表示並不是不能寫，而是必須滿足以下條件：
+$$
+K_u^{(+)}=|K_u^{(+)}|e^{i\delta_u^{(+)}},
+\qquad
+D_{nm}\rho_{n_2}=|D_{nm}\rho_{n_2}|e^{i\chi_{nm,n_2}},
+$$
 
-- harmonic 應該是 $(n_1\pm n_2)\phi$，不是只有 $n_2\phi$；
-- 相位來自微分後的 Fourier 模態；
-- 式子必須逐分量處理，或直接保留向量形式。
+則對應項會變成
 
-## 9. 總結
+$$
+2\pi |K_u^{(-)}|\,|D_{nm}\rho_{n_2}|
+\cos\!\bigl(n_2\phi-\delta_u^{(-)}-\chi_{nm,n_2}\bigr),
+$$
 
-`Results.md` 的整體策略其實是對的：
+或等價地用另一支共軛項來寫。這再次說明相位來自
+$K$ 與 $D_{nm}\rho_{n_2}$ 的組合，而不是單獨來自 $\rho_{n_2}$。
 
-- 先對 $g$ 在相對角度上做 Fourier 展開；
-- 再對平移後的密度做 Taylor 展開；
-- 再對 $\rho$ 的 $\phi'$ 依賴做 Fourier 展開；
-- 最後顯式做角度積分。
+## 8. 結論
 
-但 `Results.md` 最後壓縮成單一正弦形式時，遺失了必要的結構資訊。
-修正後、可直接檢查的結果就是第 6 節的 boxed 公式。
+Results.md 的整體策略仍然是對的：
+
+- 先把 $g$ 展成角向 harmonic。
+- 再把空間位移做 Taylor 展開。
+- 再把 $\rho$ 對 $\phi'$ 做 Fourier 展開。
+- 最後用角積分挑出保留的 mode。
+
+但只要起始分解改成
+$\cos(n_1\theta_1+n_2\theta_2)$，
+最後的局域結果就應該使用第 5 節的 boxed 公式，而不是舊版
+$A_s,A_a$，也不能把整個向量結果直接壓成單一
+$\sin(n_2\phi+\cdots)$ 的純量寫法。
