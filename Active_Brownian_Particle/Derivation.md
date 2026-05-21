@@ -142,23 +142,57 @@ $$
 
 這個式子最清楚地顯示了最後會保留下來的角向 harmonic 結構。
 
-## 4. 對 $\phi'$ 的積分
+## 4. 對 $\theta_2$ 的積分
 
-把 $\rho$ 的 Fourier 展開代入後，對 $\phi'$ 積分。只有 $k=\pm n_2$ 的模態會留下來：
+由於
 
 $$
-\int_0^{2\pi} d\phi'\; e^{ik\phi'}e^{+in_2(\phi'-\phi)}
+\theta_2=\phi'-\phi,
+\qquad
+\phi'=\theta_2+\phi,
+\qquad
+d\phi'=d\theta_2,
+$$
+
+所以把 $\rho$ 的 Fourier 展開代入後，可以直接改成對 $\theta_2$ 積分。此時
+
+$$
+e^{ik\phi'}=e^{ik(\theta_2+\phi)}=e^{ik\phi}e^{ik\theta_2}.
+$$
+
+因此只需要處理形如
+
+$$
+\int_0^{2\pi} d\theta_2\; e^{ik\theta_2}e^{+in_2\theta_2}
+=
+2\pi\,\delta_{k,-n_2},
+$$
+
+以及
+
+$$
+\int_0^{2\pi} d\theta_2\; e^{ik\theta_2}e^{-in_2\theta_2}
+=
+2\pi\,\delta_{k,n_2}
+$$
+
+的正交關係。
+
+把前面的相位因子一併乘回去後，就得到
+
+$$
+\int_0^{2\pi} d\theta_2\; e^{ik(\theta_2+\phi)}e^{+in_2\theta_2}
 =
 2\pi\,\delta_{k,-n_2}\,e^{-in_2\phi},
 $$
 
 $$
-\int_0^{2\pi} d\phi'\; e^{ik\phi'}e^{-in_2(\phi'-\phi)}
+\int_0^{2\pi} d\theta_2\; e^{ik(\theta_2+\phi)}e^{-in_2\theta_2}
 =
 2\pi\,\delta_{k,n_2}\,e^{+in_2\phi}.
 $$
 
-因此，$\phi'$ 積分後自然出現的密度模態是
+因此，$\theta_2$ 積分後自然出現的密度模態是
 
 $$
 D_{nm}^{(n_2)}(\mathbf r,t;\phi)
