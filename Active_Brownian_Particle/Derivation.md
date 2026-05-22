@@ -369,20 +369,67 @@ $C(n,m,-q)=C(n,m,q)^*$，可把
 $q=\pm n_1$ 的組合整理成只含
 $C_R,C_I$ 與 $n_1\pm1$ 的形式：
 
+令
+
+$$
+r:=\frac{n+m+n_1+1}{2},
+\qquad
+N:=n+m,
+\qquad
+K_0:=\frac{2\pi^2}{2^{n+m}}.
+$$
+
+若 $r\notin\mathbb Z$，則
+$C_R(n,m,n_1+1)$、$C_R(n,m,n_1-1)$、
+$C_I(n,m,n_1+1)$、$C_I(n,m,n_1-1)$
+四項皆為零。
+
+再採用 Krawtchouk polynomial 定義
+
+$$
+K_r(x;N):=
+\sum_{b=0}^{r}
+(-1)^b
+\binom{x}{b}
+\binom{N-x}{r-b},
+$$
+
+則你給出的簡化結果可寫成
+
+$$
+C_R(n,m,n_1+1)+C_R(n,m,n_1-1)
+=
+K_0\cos\frac{m\pi}{2}\,K_r(m;N+1),
+$$
+
+$$
+C_R(n,m,n_1+1)-C_R(n,m,n_1-1)
+=
+K_0\cos\frac{m\pi}{2}\,K_r(m+1;N+1),
+$$
+
+$$
+C_I(n,m,n_1+1)+C_I(n,m,n_1-1)
+=
+-K_0\sin\frac{m\pi}{2}\,K_r(m;N+1),
+$$
+
+$$
+C_I(n,m,n_1+1)-C_I(n,m,n_1-1)
+=
+-K_0\sin\frac{m\pi}{2}\,K_r(m+1;N+1).
+$$
+
 $$
 \int_0^{2\pi}d\theta_1\,
 \Bigl(\cos\theta_1\,\hat u+\sin\theta_1\,\hat v\Bigr)
 \cos^n\theta_1\,\sin^m\theta_1\,\cos(n_1\theta_1)
 =
-\frac{1}{\pi}
+\frac{K_0}{2\pi}
 \Bigl[
-\hat u\!\left(
-\frac{C_R(n,m,n_1+1)+C_R(n,m,n_1-1)}{2}
-\right)
-+
-\hat v\!\left(
-\frac{C_I(n,m,n_1+1)-C_I(n,m,n_1-1)}{2}
-\right)
+\hat u\cos\frac{m\pi}{2}\,K_r(m;N+1)
+-
+\hat v\sin\frac{m\pi}{2}\,K_r(m+1;N+1)
 \Bigr],
 $$
 
@@ -393,15 +440,12 @@ $$
 \Bigl(\cos\theta_1\,\hat u+\sin\theta_1\,\hat v\Bigr)
 \cos^n\theta_1\,\sin^m\theta_1\,\sin(n_1\theta_1)
 =
-\frac{1}{\pi}
+\frac{K_0}{2\pi}
 \Bigl[
-\hat u\!\left(
-\frac{C_I(n,m,n_1+1)+C_I(n,m,n_1-1)}{2}
-\right)
 -
-\hat v\!\left(
-\frac{C_R(n,m,n_1+1)-C_R(n,m,n_1-1)}{2}
-\right)
+\hat u\sin\frac{m\pi}{2}\,K_r(m;N+1)
+-
+\hat v\cos\frac{m\pi}{2}\,K_r(m+1;N+1)
 \Bigr].
 $$
 
@@ -413,16 +457,12 @@ $$
 \begin{aligned}
 \mathbf I[\rho]
 =\;&
-\frac{1}{2}\sum_{n,m,n_1,n_2}
+\frac{K_0}{4}\sum_{n,m,n_1,n_2}
 A_s(n,m,n_1,n_2)
 \Bigl[
-\hat u\!\left(
-\frac{C_R(n,m,n_1+1)+C_R(n,m,n_1-1)}{2}
-\right)
-+
-\hat v\!\left(
-\frac{C_I(n,m,n_1+1)-C_I(n,m,n_1-1)}{2}
-\right)
+\hat u\cos\frac{m\pi}{2}\,K_r(m;N+1)
+-
+\hat v\sin\frac{m\pi}{2}\,K_r(m+1;N+1)
 \Bigr]
 \left[
 \bigl(D_{nm}\rho_{-n_2}(\mathbf r,t)\bigr)e^{-in_2\phi}
@@ -431,16 +471,13 @@ A_s(n,m,n_1,n_2)
 \right]
 \\[0.5em]
 &+
-\frac{1}{2}\sum_{n,m,n_1,n_2}
+\frac{K_0}{4}\sum_{n,m,n_1,n_2}
 A_a(n,m,n_1,n_2)
 \Bigl[
-\hat u\!\left(
-\frac{C_I(n,m,n_1+1)+C_I(n,m,n_1-1)}{2}
-\right)
 -
-\hat v\!\left(
-\frac{C_R(n,m,n_1+1)-C_R(n,m,n_1-1)}{2}
-\right)
+\hat u\sin\frac{m\pi}{2}\,K_r(m;N+1)
+-
+\hat v\cos\frac{m\pi}{2}\,K_r(m+1;N+1)
 \Bigr]
 \left[
 \bigl(D_{nm}\rho_{n_2}(\mathbf r,t)\bigr)e^{+in_2\phi}
@@ -451,11 +488,6 @@ A_a(n,m,n_1,n_2)
 }
 $$
 
-這個式子已經不再使用壓縮記號 $A(n,m,n_1,n_2)$，
-也不再使用 $\widetilde{\mathbf C}_{nm}(q)$；
-所有角向結構都已明確展開成
-$C_R(n,m,n_1\pm1)$、$C_I(n,m,n_1\pm1)$
-與局部基底 $(\hat u,\hat v)$ 的線性組合。
 
 ### 5.5 把共軛對改寫成 $\cos$ 與 $\sin$
 
@@ -560,40 +592,42 @@ $$
 \begin{aligned}
 \mathbf I[\rho]
 =\;&
-\sum_{n,m,n_1,n_2}
-A_s(n,m,n_1,n_2)
-\Bigl[
-\hat u\!\left(
-\frac{C_R(n,m,n_1+1)+C_R(n,m,n_1-1)}{2}
-\right)
-+
-\hat v\!\left(
-\frac{C_I(n,m,n_1+1)-C_I(n,m,n_1-1)}{2}
-\right)
-\Bigr]
-\,D_{nm}\!\left[
+\frac{K_0}{2}\sum_{n,m,n_1,n_2}
+\hat u\,K_r(m;N+1)
+\Biggl[
+A_s(n,m,n_1,n_2)\cos\frac{m\pi}{2}\,
+D_{nm}\!\left[
 X_{n_2}(\mathbf r,t)\cos\!\bigl(n_2\phi+\psi_{n_2}(\mathbf r,t)\bigr)
 \right]
-\\[0.5em]
-&+
-i\sum_{n,m,n_1,n_2}
-A_a(n,m,n_1,n_2)
-\Bigl[
-\hat u\!\left(
-\frac{C_I(n,m,n_1+1)+C_I(n,m,n_1-1)}{2}
-\right)
--
-\hat v\!\left(
-\frac{C_R(n,m,n_1+1)-C_R(n,m,n_1-1)}{2}
-\right)
-\Bigr]
-\,D_{nm}\!\left[
+\\
+&\hspace{8.4em}
+-\,iA_a(n,m,n_1,n_2)\sin\frac{m\pi}{2}\,
+D_{nm}\!\left[
 X_{n_2}(\mathbf r,t)\sin\!\bigl(n_2\phi+\psi_{n_2}(\mathbf r,t)\bigr)
-\right].
+\right]
+\Biggr]
+\\[0.75em]
+&-
+\frac{K_0}{2}\sum_{n,m,n_1,n_2}
+\hat v\,K_r(m+1;N+1)
+\Biggl[
+A_s(n,m,n_1,n_2)\sin\frac{m\pi}{2}\,
+D_{nm}\!\left[
+X_{n_2}(\mathbf r,t)\cos\!\bigl(n_2\phi+\psi_{n_2}(\mathbf r,t)\bigr)
+\right]
+\\
+&\hspace{8.4em}
++\,iA_a(n,m,n_1,n_2)\cos\frac{m\pi}{2}\,
+D_{nm}\!\left[
+X_{n_2}(\mathbf r,t)\sin\!\bigl(n_2\phi+\psi_{n_2}(\mathbf r,t)\bigr)
+\right]
+\Biggr].
 \end{aligned}
 }
 $$
 
-這樣寫不需要另外定義新的振幅與相位符號，
-而且完整保留了 $D_{nm}$ 對整個
+這樣改寫之後，$\hat u$ 與 $\hat v$ 兩個基底分量已各自合併完成；
+在每個基底內部，兩項都只依賴同一個相位
+$n_2\phi+\psi_{n_2}(\mathbf r,t)$，
+並且完整保留了 $D_{nm}$ 對整個
 $X_{n_2}\cos(\cdots)$ 或 $X_{n_2}\sin(\cdots)$ 的作用。
