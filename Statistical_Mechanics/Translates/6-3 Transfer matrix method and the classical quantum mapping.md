@@ -187,17 +187,21 @@ $$
 利用
 
 $$
+\begin{align}
 (c_1\sigma_1+c_2\sigma_2+c_3\sigma_3)^{2n}&=r^{2n}\\
 (c_1\sigma_1+c_2\sigma_2+c_3\sigma_3)^{2n+1}&=r^{2n}(c_1\sigma_1+c_2\sigma_2+c_3\sigma_3)\\
 r&=\sqrt{c_1^2+c_2^2+c_3^2}\text{,}
+\end{align}
 $$
 
 可以得到
 
 $$
+\begin{align}
 C&=\sqrt{2\sinh 2K}\\
 c_2&=0\\
 c_3&=c_1 e^{2K}\sinh h
+\end{align}
 $$
 
 而 $c_1$ 則滿足
@@ -209,10 +213,12 @@ $$
 當 $h=0$ 時，式子會簡化成
 
 $$
+\begin{align}
 C&=\sqrt{2\sinh 2K}\\
 c_1&=\tanh^{-1}e^{-2K}\\
 c_2&=0\\
 c_3&=0\text{.}
+\end{align}
 $$
 
 因此
