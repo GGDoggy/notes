@@ -13,7 +13,7 @@ one can consider the book of `up` token only. Which already contains all informa
 - `bid_volume_i`
 - `ask_price_i`
 - `ask_volume_i`
-`i` means the i'th price-volume pair from the best price, which can be limited by the data source or selected manually.
+`i` means the i'th price-volume pair from the best price, which may be limited by the data source or selected manually.
 # Trade
 
 Due to the same reason from the order book part, information of trades can be reduced to consider buying / selling of the `up` token only.
