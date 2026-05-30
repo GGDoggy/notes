@@ -3,7 +3,7 @@
 Because
 - buying / selling an `up` is equivalent to selling / buying a `down`
 - the book of `up` and `down` is basically symmetric
-we only need to consider the `up` token only, which already captures the relevant state information.
+we only need to consider the `up` token, which already captures the relevant state information.
 
 # Data types
 
