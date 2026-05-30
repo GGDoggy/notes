@@ -8,7 +8,7 @@ Because
 one can consider the book of `up` token only. Which already contains all information of the order book(s).
 ## Columns
 
-- `timestamp`: seconds (or ms) starts from the begin of market.
+- `timestamp`: seconds (or ms) starts from the begin of market (maybe mapped to \[0, 1].)
 - `bid_price_i`
 - `bid_volume_i`
 - `ask_price_i`
@@ -20,7 +20,7 @@ Due to the same reason from the order book part, information of trades can be re
 
 ## Columns
 
-- `timestamp`: same as the orderbook part
+- `timestamp`: same structure as the orderbook's
 - `side`: `-1` for `buy` maker (`sell` taker) and `+1` for `sell` maker (`buy` taker.)
 - `price`
 - `volume`
