@@ -55,6 +55,8 @@ S.N.: Does every trade event generate a corresponding book update? If so, snapsh
 
 ##### Order flow
 
+Oracle?
+
 ### Others
 
 This category includes information about the asset or market that the prediction market refers to. In our case, this is the crypto market.
@@ -85,3 +87,5 @@ S.N.: Rather than indexing by raw timestamp, I would prefer bundling a fixed num
 **To do:** Enumerate microstructure LOB features (spread, book imbalance, depth, fill rate, order flow) to serve as interpretability benchmarks for latent quality.
 
 ## Benchmark data structure
+
+Order book... enough?
